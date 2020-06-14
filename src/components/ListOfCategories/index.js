@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Category } from '../Category/index'
 import { List, Item } from './styles'
 import { useCategoriesData } from '../../hooks/useCategoriesData'
@@ -24,7 +24,7 @@ export function ListOfCategories(props) {
       {
         categories.map(category => (
           <Item key={category.id}>
-            <Category { ...category }/>
+            <Category { ...category } path={`/pet/${category.id}`}/>
           </Item>
           )
         )
@@ -41,5 +41,5 @@ export function ListOfCategories(props) {
       { renderList() }
       { showFixed && renderList(true) }
     </>
-  );
+  )
 }

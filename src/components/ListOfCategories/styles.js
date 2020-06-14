@@ -6,6 +6,7 @@ export const List = styled.ul`
   overflow: auto;
   list-style: none;
   width: 100%;
+  padding: 0 5px 15px;
   ${props => props.fixed && css`
     ${fadeIn({ 
         time: '0.5s',
