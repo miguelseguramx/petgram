@@ -1,30 +1,42 @@
 import React from 'react'
-import { ApolloClient, HttpLink, InMemoryCache } from'apollo-boost'
+import ApolloClient from'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import { GlobalStyle } from './styles/GlobalStyle'
 import { Logo } from './components/Logo'
 import { Routes } from './routes'
 import { NavBar } from './components/Navbar'
-
-const cache = new InMemoryCache()
-
-const link = new HttpLink({
-  uri: 'https://petgram-server.miguelseguramx.now.sh/graphql',
-})
+import { Provider } from './Context'
 
 const client = new ApolloClient({
-  cache,
-  link,
+  uri: 'https://petgram-server.miguelseguramx.now.sh/graphql',
+  request: operation => {
+    const token = window.sessionStorage.getItem('token')
+    const authorization = token ? `Bearer ${token}` : ''
+    operation.setContext({
+      headers: {
+        authorization
+      }
+    })
+  },
+  onError: error => {
+    const { networkError } = error
+    if (networkError && networkError.result.code === 'invalid_token') {
+      window.sessionStorage.removeItem('token')
+      window.location.href = '/'
+    }
+  }
 })
 
 export function App(props) {
 
   return (
-    <ApolloProvider client={client}>
-      <GlobalStyle />
-      <Logo />
-      <Routes />
-      <NavBar />
-    </ApolloProvider>
+    <Provider>
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <Logo />
+        <Routes />
+        <NavBar />
+      </ApolloProvider>
+    </Provider>
   )
 }

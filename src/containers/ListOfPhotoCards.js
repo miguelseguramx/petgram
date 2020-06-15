@@ -7,9 +7,9 @@ export const ListOfPhotoCards = ({ categoryId }) => {
   const { loading, err, data } = useQuery(GET_PHOTOS, {
     variables: { categoryId }
   })
-  
+
   if(loading) return null
-  
+
   const { photos } = data
 
   return (
