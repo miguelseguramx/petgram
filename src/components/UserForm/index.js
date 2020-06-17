@@ -2,6 +2,7 @@ import React from 'react'
 import { useInputValue } from '../../hooks/useInputValue'
 import { FormContainer, Form, Input, Title, Error, ChangeAuthStep } from './styles'
 import { SubmitButton } from '../SubmitButton'
+import PropTypes from 'prop-types'
 
 export const UserForm = ({ error, disabled, onSubmit, title, setAuthStep }) => {
   const email = useInputValue('')
@@ -39,7 +40,7 @@ export const UserForm = ({ error, disabled, onSubmit, title, setAuthStep }) => {
       </Form>
       { error && <Error>{error}</Error> }
       <ChangeAuthStep
-        onClick={() => title === 'Log In' ? setAuthStep('register') : setAuthStep('login')}
+        onClick={() => title === 'Log In' ? setAuthStep('Register') : setAuthStep('Login')}
       >
         {
           title === 'Log In' ? 'Sing In' : 'Log In'
@@ -47,4 +48,12 @@ export const UserForm = ({ error, disabled, onSubmit, title, setAuthStep }) => {
       </ChangeAuthStep>
     </FormContainer>
   )
+}
+
+UserForm.propTypes = {
+  error: PropTypes.object,
+  disabled: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  setAuthStep: PropTypes.func.isRequired,
 }

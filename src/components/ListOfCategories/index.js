@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Category } from '../Category/index'
+import { Category } from '../Category'
 import { List, Item } from './styles'
 import { useCategoriesData } from '../../hooks/useCategoriesData'
 
-export function ListOfCategories(props) {
+const ListOfCategoriesComponents = () => {
   const { categories, loading } = useCategoriesData()
   const [ showFixed, setShowFixed ] = useState(false)
 
   useEffect(() => {
     const onScroll = e => {
-      const newShowFixed = window.scrollY > 200 
+      const newShowFixed = window.scrollY > 200
 
       showFixed !== newShowFixed && setShowFixed(newShowFixed)
     }
@@ -32,9 +32,16 @@ export function ListOfCategories(props) {
     </List>
   )
 
-  if (loading) {
-    return 'Loading...'
-  }
+  if(loading) return (
+    <List>
+      <span className="circle"/>
+      <span className="circle"/>
+      <span className="circle"/>
+      <span className="circle"/>
+      <span className="circle"/>
+      <span className="circle"/>
+    </List>
+  )
 
   return (
     <>
@@ -43,3 +50,5 @@ export function ListOfCategories(props) {
     </>
   )
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponents)

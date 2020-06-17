@@ -50,4 +50,5 @@ export const ChangeAuthStep = styled.button`
   text-align: center;
   width: fit-content;
   font-size: 16px;
+  cursor: pointer;
 `

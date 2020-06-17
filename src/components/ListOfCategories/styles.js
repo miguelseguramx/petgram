@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
-import { fadeIn } from '../../styles/animations'
+import { fadeIn } from '../../styles/fadeIn'
+import { loadingBack } from '../../styles/loadingBack'
 
 export const List = styled.ul`
   display: flex;
@@ -7,8 +8,38 @@ export const List = styled.ul`
   list-style: none;
   width: 100%;
   padding: 0 5px 15px;
+
+  .circle{
+    ${loadingBack()}
+    min-width: 75px;
+    margin: 0 10px;
+    height: 75px;
+    border-radius: 50%;
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background-color: #cecece;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background-color: #929292;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #8d00ff;
+  }
+
   ${props => props.fixed && css`
-    ${fadeIn({ 
+    ${fadeIn({
         time: '0.5s',
         type: 'ease-out'
       })
@@ -26,7 +57,6 @@ export const List = styled.ul`
     transform: scale(.5);
     z-index: 1;
   `}
-    
 `
 
 export const Item = styled.li`

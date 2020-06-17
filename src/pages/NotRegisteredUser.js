@@ -3,10 +3,11 @@ import { useStateValue } from '../Context'
 import { UserForm } from '../components/UserForm/index'
 import { RegisterMutation } from '../containers/RegisterUserMutation'
 import { LoginMutation } from '../containers/LoginMutation'
+import { Layout } from '../components/Layout/index'
 
 export const NotRegisteredUser = () => {
   const [ {}, dispatch ] = useStateValue();
-  const [authStep, setAuthStep] = useState('login')
+  const [authStep, setAuthStep] = useState('Login')
 
   const register = (register, { data, loading, error }) => {
     const onSubmit = ({ email, password }) => {
@@ -58,9 +59,9 @@ export const NotRegisteredUser = () => {
   }
 
   return (
-    <>
+    <Layout title={authStep} subtitle="Aqui puedes autenticarte para ingresar a Petgram">
       {
-        authStep === 'register' ?
+        authStep === 'Register' ?
           <RegisterMutation>
             {register}
           </RegisterMutation> :
@@ -68,6 +69,6 @@ export const NotRegisteredUser = () => {
             {login}
           </LoginMutation>
       }
-    </>
+    </Layout>
   )
 }

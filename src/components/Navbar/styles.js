@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link as LinkRouter } from '@reach/router'
-import { fadeIn } from '../../styles/animations' 
+import { fadeIn } from '../../styles/fadeIn'
 
 export const Nav = styled.nav`
   align-items: center;
