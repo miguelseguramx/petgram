@@ -17,7 +17,7 @@ module.exports = {
       template: 'src/index.html'
     }),
     new WebpackPwaManifestPlugin({
-      filename: 'manifest.webmanifest',
+      filename: 'manifest.json',
       name: 'IntaPlatzi',
       description: 'Tu app preferida para encontrar esas mascotas que tanto te encantan',
       orientation: 'portrait',
