@@ -18,7 +18,7 @@ module.exports = {
     }),
     new WebpackPwaManifestPlugin({
       filename: 'manifest.json',
-      name: 'IntaPlatzi',
+      name: 'Petgram',
       description: 'Tu app preferida para encontrar esas mascotas que tanto te encantan',
       orientation: 'portrait',
       display: 'standalone',
