@@ -19,7 +19,7 @@ module.exports = {
     new WebpackPwaManifestPlugin({
       filename: 'manifest.json',
       name: 'Petgram',
-      description: 'Tu app preferida para encontrar esas mascotas que tanto te encantan',
+      description: 'Tu app preferida para encontrar a tus marcotas favoritas',
       orientation: 'portrait',
       display: 'standalone',
       start_url: '/',
